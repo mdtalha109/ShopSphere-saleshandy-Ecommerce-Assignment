@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ShoppingCart } from "lucide-react";
 import IconButton from "@/src/components/ui/Button/IconButton";
 import Button from "@/src/components/ui/Button/Button";
+import { SearchBar } from "./SearchBar";
 import styles from "./Header.module.css";
 
 
@@ -32,19 +33,23 @@ Header.Logo = function HeaderLogo() {
   );
 };
 
+/**
+ * Header Search Component
+ * Wraps SearchBar with header-specific styling
+ */
 Header.Search = function HeaderSearch() {
-  return (
-    <>
-        {/* TODO: Integrate search bar here */}
-    </>
-  )
+  return <SearchBar className={styles.searchForm} />;
 };
 
+/**
+ * Header Actions Component
+ * Contains cart and user actions
+ */
 Header.Actions = function HeaderActions() {
-  const user = {
-    isAuthenticated: true
-  };
-  const cartCount = 2;
+    const cartCount = 3; 
+    const user = {
+      isAuthenticated: false,
+    };
 
   return (
     <div className={styles.actions}>
