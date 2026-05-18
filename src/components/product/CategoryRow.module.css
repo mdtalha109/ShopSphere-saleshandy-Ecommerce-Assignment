@@ -1,0 +1,133 @@
+/* Category Row Section */
+.section {
+  padding: 2.5rem 0;
+  background-color: #fff;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  gap: 1rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111;
+  margin: 0;
+  letter-spacing: -0.03em;
+}
+
+.viewMore {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 0.875rem;
+  background-color: #fafafa;
+  color: #111;
+  border: 1px solid #ececec;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.viewMore:hover {
+  background-color: #111;
+  color: #fff;
+  border-color: #111;
+  transform: translateX(2px);
+}
+
+/* Scroll Container */
+.scrollContainer {
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #ddd transparent;
+  padding-bottom: 0.75rem;
+}
+
+.scrollContainer::-webkit-scrollbar {
+  height: 6px;
+}
+
+.scrollContainer::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 3px;
+}
+
+.scrollContainer::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 3px;
+  transition: background 0.2s ease;
+}
+
+.scrollContainer::-webkit-scrollbar-thumb:hover {
+  background: #bbb;
+}
+
+/* Products Grid */
+.productsGrid {
+  display: flex;
+  gap: 0.875rem;
+  padding: 0.125rem;
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) {
+  .container {
+    padding: 0 2rem;
+  }
+
+  .title {
+    font-size: 1.625rem;
+  }
+
+  .productsGrid {
+    gap: 1rem;
+  }
+}
+
+/* Desktop Styles */
+@media (min-width: 1024px) {
+  .section {
+    padding: 3rem 0;
+  }
+
+  .container {
+    padding: 0 3rem;
+  }
+
+  .header {
+    margin-bottom: 1.5rem;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .productsGrid {
+    gap: 1.125rem;
+  }
+}
+
+/* Large Desktop */
+@media (min-width: 1440px) {
+  .container {
+    padding: 0 4rem;
+  }
+}
