@@ -5,7 +5,6 @@ import { ProductCategory } from "@/src/types";
 /**
  * GET /api/search
  * Search products with filters
- * Query params: q, category, minPrice, maxPrice, sort
  */
 export async function GET(request: NextRequest) {
   try {
