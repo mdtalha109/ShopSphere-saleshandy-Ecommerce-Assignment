@@ -1,0 +1,172 @@
+/* Section */
+.section {
+  padding: 3.5rem 1rem;
+  background: #fff;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* Header */
+.header {
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #111;
+  margin: 0 0 0.5rem;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: #666;
+  margin: 0;
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.875rem;
+}
+
+/* Card */
+.card {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  padding: 1rem;
+
+  background: #fafafa;
+  border: 1px solid #ececec;
+  border-radius: 18px;
+
+  text-decoration: none;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  overflow: hidden;
+  min-height: 140px;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: #ddd;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+
+/* Accent */
+.card::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--category-color) 10%, transparent),
+      transparent 55%
+    );
+
+  opacity: 1;
+  pointer-events: none;
+}
+
+/* Icon */
+.iconWrapper {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.9);
+
+  color: var(--category-color);
+
+  margin-bottom: 0.875rem;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.iconWrapper svg {
+  width: 22px;
+  height: 22px;
+}
+
+.card:hover .iconWrapper {
+  transform: scale(1.05);
+}
+
+/* Text */
+.categoryName {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #111;
+  margin: 0 0 0.35rem;
+  line-height: 1.3;
+}
+
+.categoryDescription {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: #666;
+  margin: 0;
+}
+
+/* Remove old CTA */
+.viewMore {
+  display: none;
+}
+
+/* Tablet */
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .section {
+    padding: 4rem 2rem;
+  }
+
+  .header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .card {
+    min-height: 150px;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+}
