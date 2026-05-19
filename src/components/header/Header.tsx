@@ -6,6 +6,7 @@ import IconButton from "@/src/components/ui/Button/IconButton";
 import Button from "@/src/components/ui/Button/Button";
 import { SearchBar } from "./SearchBar";
 import styles from "./Header.module.css";
+import { useCart } from "@/src/hooks/cart";
 
 
 interface HeaderProps {
@@ -46,7 +47,7 @@ Header.Search = function HeaderSearch() {
  * Contains cart and user actions
  */
 Header.Actions = function HeaderActions() {
-    const cartCount = 3; 
+    const cartCount = useCart()?.state?.items?.length; 
     const user = {
       isAuthenticated: false,
     };
