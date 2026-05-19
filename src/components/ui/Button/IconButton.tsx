@@ -5,8 +5,8 @@ import styles from "./IconButton.module.css";
 
 interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   icon: React.ReactNode;
-  label: string; // For accessibility
-  variant?: "default" | "ghost";
+  label: string;
+  variant?: "default" | "ghost" | "outline";
   size?: "small" | "medium" | "large";
   badge?: number | string;
 }
