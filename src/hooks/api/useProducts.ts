@@ -29,7 +29,7 @@ export function useProducts() {
       const response = await fetchProducts();
       return response.data;
     },
-    staleTime: 5 * 60 * 1000, // 5 minutes
+    staleTime: 5 * 60 * 1000,
   });
 }
 
@@ -50,9 +50,25 @@ export function useProductsByCategory(
   return useQuery({
     queryKey: productKeys.category(category, options?.limit, options?.page),
     queryFn: async () => {
-      const response = await fetchProductsByCategory(category, options);
-      return response.data;
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 8000);
+      
+      try {
+        const response = await fetchProductsByCategory(category, options);
+        clearTimeout(timeoutId);
+        return response.data;
+      } catch (error) {
+        clearTimeout(timeoutId);
+        throw error;
+      }
     },
+    staleTime: 5 * 60 * 1000,
+    gcTime: 10 * 60 * 1000,
+    retry: 1,
+    retryDelay: 1000,
+    refetchOnMount: 'always',
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: true,
   });
 }
 

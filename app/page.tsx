@@ -26,14 +26,21 @@ export const metadata: Metadata = {
 export default async function Home() {
   const queryClient = makeQueryClient();
 
-  await Promise.all(
-    HOMEPAGE_CATEGORIES.map((category) =>
-      queryClient.prefetchQuery({
-        queryKey: productKeys.category(category, 10, 1),
-        queryFn: () => productService.getProductsByCategory(category, { limit: 10, page: 1 }).products,
-      })
-    )
-  );
+  try {
+    await Promise.all(
+      HOMEPAGE_CATEGORIES.map((category) =>
+        queryClient.prefetchQuery({
+          queryKey: productKeys.category(category, 10),
+          queryFn: async () => {
+            const result = await productService.getProductsByCategory(category, { limit: 10, page: 1 });
+            return result.products;
+          },
+        })
+      )
+    );
+  } catch (error) {
+    console.error('Failed to prefetch homepage products:', error);
+  }
 
   const dehydratedState = dehydrate(queryClient);
 

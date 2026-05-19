@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { ProductCategory } from "@/src/types";
 import { CategoryRow, CategoryRowSkeleton } from "@/src/components/product";
 import { useProductsByCategory } from "@/src/hooks/api";
@@ -30,9 +31,20 @@ interface CategorySectionProps {
 }
 
 function CategorySection({ category }: CategorySectionProps) {
-  const { data: products, isLoading, isError } = useProductsByCategory(category, { limit: 10 });
+  const { data: products, isLoading, isError, error, isFetching, status } = useProductsByCategory(category, { limit: 10 });
 
-  if (isLoading) {
+  useEffect(() => {
+    if (isLoading) {
+      const timeout = setTimeout(() => {
+        if (isLoading && !isFetching && !products) {
+          console.error(`Query timeout for ${category}. Status: ${status}`);
+        }
+      }, 10000);
+      return () => clearTimeout(timeout);
+    }
+  }, [isLoading, isFetching, category, products, status]);
+
+  if (isLoading && !products) {
     return (
       <CategoryRowSkeleton 
         categoryLabel={categoryLabels[category]} 
@@ -41,7 +53,12 @@ function CategorySection({ category }: CategorySectionProps) {
     );
   }
 
-  if (isError || !products || products.length === 0) {
+  if (isError) {
+    console.error(`Failed to load products for ${category}:`, error);
+    return null;
+  }
+
+  if (!products || products.length === 0) {
     return null;
   }
 
