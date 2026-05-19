@@ -1,0 +1,66 @@
+/* Specifications Container */
+.container {
+  padding: 2rem 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #000;
+  margin: 0 0 1.5rem 0;
+  letter-spacing: -0.02em;
+}
+
+/* Specs Grid */
+.specsGrid {
+  display: grid;
+  gap: 1rem;
+}
+
+.specRow {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: var(--color-background-secondary);
+  border-radius: 0.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.specRow:hover {
+  background-color: var(--color-background-hover);
+}
+
+.specKey {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.specValue {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #000;
+}
+
+.unit {
+  color: var(--color-text-secondary);
+}
+
+/* Tablet & Desktop */
+@media (min-width: 768px) {
+  .specsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .specRow {
+    grid-template-columns: 1fr 2fr;
+  }
+}

@@ -1,0 +1,56 @@
+/* Product Detail Container */
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.imageColumn {
+  width: 100%;
+}
+
+.infoColumn {
+  width: 100%;
+}
+
+/* Specifications Section */
+.specsSection {
+  width: 100%;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .container {
+    padding: 2rem;
+  }
+
+  .content {
+    gap: 3rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .container {
+    padding: 3rem 3rem;
+  }
+
+  .content {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+}
+
+/* Large Desktop */
+@media (min-width: 1440px) {
+  .container {
+    padding: 4rem;
+  }
+}

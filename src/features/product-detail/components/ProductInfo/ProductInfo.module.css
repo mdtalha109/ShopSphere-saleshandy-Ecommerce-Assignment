@@ -1,0 +1,245 @@
+/* Product Info Container */
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Brand */
+.brand {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Title */
+.title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #000;
+  margin: 0;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+/* Short Description */
+.shortDescription {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Rating */
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.stars {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.starIcon {
+  color: #f59e0b;
+}
+
+.ratingValue {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #000;
+}
+
+.ratingCount {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+/* Price */
+.priceSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.currentPrice {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #000;
+  letter-spacing: -0.02em;
+}
+
+.priceDetails {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.originalPrice {
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
+  text-decoration: line-through;
+}
+
+.savings {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #059669;
+}
+
+/* Stock Status */
+.stockStatus {
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.inStock {
+  color: #059669;
+}
+
+.lowStock {
+  color: #f59e0b;
+}
+
+.outOfStock {
+  color: #dc2626;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Quantity Selector */
+.quantitySelector {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.quantityButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 48px;
+  background: transparent;
+  border: none;
+  color: #000;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.quantityButton:hover:not(:disabled) {
+  background-color: var(--color-background-hover);
+}
+
+.quantityButton:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+  height: 48px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #000;
+  border-left: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
+}
+
+/* Add to Cart Button */
+.addToCartButton {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 48px;
+  padding: 0 2rem;
+  background-color: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.addToCartButton:hover:not(:disabled) {
+  background-color: var(--color-primary-hover);
+}
+
+.addToCartButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.sectionTitle {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #000;
+  margin: 0;
+}
+
+.descriptionText {
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Tags */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  padding: 0.375rem 0.75rem;
+  background-color: var(--color-background-secondary);
+  color: var(--color-text-secondary);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  border-radius: 0.375rem;
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .title {
+    font-size: 2.25rem;
+  }
+
+  .currentPrice {
+    font-size: 2.5rem;
+  }
+}
