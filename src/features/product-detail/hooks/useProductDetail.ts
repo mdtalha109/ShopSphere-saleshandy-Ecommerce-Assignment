@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import { Product } from "@/src/types";
+import { useCartActions } from "@/src/hooks/cart";
 import { AddToCartState, ProductImageGalleryState } from "../types/product-detail.types";
 
 
 export function useProductDetail(product: Product) {
+  const { addItem } = useCartActions();
 
   const [gallery, setGallery] = useState<ProductImageGalleryState>({
     selectedImageIndex: 0,
@@ -35,11 +37,25 @@ export function useProductDetail(product: Product) {
   };
 
   const addToCart = async () => {
+    // Check if product is in stock
+    if (!product.stock.inStock || product.stock.quantity < cartState.quantity) {
+      console.warn('Product is out of stock or insufficient quantity');
+      return;
+    }
+
     setCartState((prev) => ({ ...prev, isAdding: true }));
     
-    // TODO: Implement actual add to cart logic`);
-    
-    setCartState((prev) => ({ ...prev, isAdding: false }));
+    try {
+      // Add item to cart via CartContext
+      addItem(product.id, cartState.quantity);
+      
+      // Optional: Reset quantity to 1 after adding
+      // setCartState((prev) => ({ ...prev, quantity: 1 }));
+    } catch (error) {
+      console.error('Failed to add item to cart:', error);
+    } finally {
+      setCartState((prev) => ({ ...prev, isAdding: false }));
+    }
   };
 
   const selectedImage = product.images[gallery.selectedImageIndex];
