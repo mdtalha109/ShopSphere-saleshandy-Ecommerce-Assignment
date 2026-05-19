@@ -47,6 +47,17 @@
   background-color: #f5f5f5;
 }
 
+.outline {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 1.5px solid var(--color-primary);
+}
+
+.outline:hover:not(:disabled) {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
 /* Sizes */
 .small {
   padding: 0.5rem 1rem;

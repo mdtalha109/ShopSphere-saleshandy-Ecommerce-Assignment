@@ -4,7 +4,7 @@ import { ButtonHTMLAttributes, forwardRef } from "react";
 import styles from "./Button.module.css";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "ghost";
+  variant?: "primary" | "secondary" | "ghost" | "outline";
   size?: "small" | "medium" | "large";
   children: React.ReactNode;
 }
