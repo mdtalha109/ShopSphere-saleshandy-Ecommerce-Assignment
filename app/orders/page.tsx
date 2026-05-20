@@ -48,7 +48,7 @@ export default function OrdersPage() {
       <div className={styles.content}>
         <div className={styles.header}>
           <h1 className={styles.title}>My Orders</h1>
-          <p className={styles.subtitle}>{orders.length} {orders.length === 1 ? 'order' : 'orders'} found</p>
+          <p className={styles.subtitle}>({orders.length} {orders.length === 1 ? 'order' : 'orders'} found)</p>
         </div>
 
         <div className={styles.ordersList}>
