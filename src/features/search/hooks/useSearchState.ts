@@ -5,15 +5,10 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { SearchParams } from "@/src/types/api.types";
 import { ProductCategory } from "@/src/types";
 
-/**
- * Search State Management Hook
- * Manages search query, filters, and URL synchronization
- */
 export function useSearchState() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  // Initialize state from URL
   const [query, setQuery] = useState(searchParams.get("q") || "");
   const [category, setCategory] = useState<ProductCategory | undefined>(
     (searchParams.get("category") as ProductCategory) || undefined
@@ -28,8 +23,22 @@ export function useSearchState() {
     (searchParams.get("sort") as SearchParams["sort"]) || undefined
   );
 
-  // Debounced query
   const [debouncedQuery, setDebouncedQuery] = useState(query);
+
+  useEffect(() => {
+    const urlQuery = searchParams.get("q") || "";
+    const urlCategory = (searchParams.get("category") as ProductCategory) || undefined;
+    const urlMinPrice = searchParams.get("minPrice") ? Number(searchParams.get("minPrice")) : undefined;
+    const urlMaxPrice = searchParams.get("maxPrice") ? Number(searchParams.get("maxPrice")) : undefined;
+    const urlSort = (searchParams.get("sort") as SearchParams["sort"]) || undefined;
+
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setQuery(urlQuery);
+    setCategory(urlCategory);
+    setMinPrice(urlMinPrice);
+    setMaxPrice(urlMaxPrice);
+    setSort(urlSort);
+  }, [searchParams]);
 
   // Debounce effect
   useEffect(() => {
@@ -54,14 +63,12 @@ export function useSearchState() {
     router.push(`/search${queryString ? `?${queryString}` : ""}`);
   }, [debouncedQuery, category, minPrice, maxPrice, sort, router]);
 
-  // Update URL when debounced query or filters change
   useEffect(() => {
     if (debouncedQuery || category || minPrice || maxPrice || sort) {
       updateURL();
     }
   }, [debouncedQuery, category, minPrice, maxPrice, sort, updateURL]);
 
-  // Build search params for API
   const searchAPIParams: SearchParams = {
     q: debouncedQuery || undefined,
     category,
@@ -70,7 +77,6 @@ export function useSearchState() {
     sort,
   };
 
-  // Reset all filters
   const resetFilters = () => {
     setQuery("");
     setCategory(undefined);
@@ -81,7 +87,7 @@ export function useSearchState() {
   };
 
   return {
-    // State
+
     query,
     debouncedQuery,
     category,
@@ -90,7 +96,7 @@ export function useSearchState() {
     sort,
     searchAPIParams,
 
-    // Actions
+
     setQuery,
     setCategory,
     setMinPrice,
