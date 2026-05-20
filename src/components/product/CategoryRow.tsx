@@ -18,11 +18,10 @@ export function CategoryRow({ category, categoryLabel, products }: CategoryRowPr
   return (
     <section className={styles.section}>
       <div className={styles.container}>
-        {/* Header */}
         <div className={styles.header}>
           <h2 className={styles.title}>{categoryLabel}</h2>
           <Link 
-            href={`/products?category=${category}`}
+            href={`/category/${category}`}
             className={styles.viewMore}
           >
             <span>View More</span>
@@ -30,7 +29,6 @@ export function CategoryRow({ category, categoryLabel, products }: CategoryRowPr
           </Link>
         </div>
 
-        {/* Products Scroll Container */}
         <div className={styles.scrollContainer}>
           <div className={styles.productsGrid}>
             {products.map((product) => (
