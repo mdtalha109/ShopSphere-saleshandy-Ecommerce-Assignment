@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
+import { Suspense } from 'react';
 import { ProductCategory } from '@/src/types';
 import { productService } from '@/src/services';
 import { ProductListingLayout } from '@/src/features/product-listing';
@@ -78,10 +79,12 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   const description = categoryDescriptions[categoryEnum];
 
   return (
-    <ProductListingLayout
-      products={result.products}
-      title={label}
-      description={description}
-    />
+    <Suspense fallback={<div style={{ padding: '2rem', textAlign: 'center' }}>Loading...</div>}>
+      <ProductListingLayout
+        products={result.products}
+        title={label}
+        description={description}
+      />
+    </Suspense>
   );
 }
