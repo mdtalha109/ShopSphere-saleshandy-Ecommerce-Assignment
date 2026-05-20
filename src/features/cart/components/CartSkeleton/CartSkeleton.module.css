@@ -10,7 +10,7 @@
 
 .content {
   display: grid;
-  grid-template-columns: 1fr 380px;
+  grid-template-columns: 1fr 480px;
   gap: 2rem;
   align-items: start;
 }
@@ -127,10 +127,11 @@
 @media (max-width: 640px) {
   .container {
     padding: 1.5rem 1rem;
+    max-width: 80vw;
   }
 
   .itemSkeleton {
-    grid-template-columns: 80px 1fr;
+    grid-template-columns: 70vw 1fr;
     gap: 0.75rem;
     padding: 1rem;
   }
