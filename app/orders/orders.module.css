@@ -11,9 +11,11 @@
 }
 
 .header {
+  display: flex;
+  align-items: baseline;
   margin-bottom: 2rem;
+  gap: 1rem;
 }
-
 .title {
   font-size: 2rem;
   font-weight: 700;
