@@ -44,10 +44,8 @@
 }
 
 .viewMore:hover {
-  background-color: #111;
+  background-color: var(--color-primary);
   color: #fff;
-  border-color: #111;
-  transform: translateX(2px);
 }
 
 /* Scroll Container */
