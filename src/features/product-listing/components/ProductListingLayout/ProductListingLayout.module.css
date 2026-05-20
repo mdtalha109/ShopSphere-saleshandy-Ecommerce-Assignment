@@ -12,6 +12,34 @@
   gap: 2rem;
 }
 
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.mobileFilterButton {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mobileFilterButton svg {
+  flex-shrink: 0;
+}
+
+.filterBadge {
+  width: 8px;
+  height: 8px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  margin-left: 0.25rem;
+}
+
+.desktopSidebar {
+  display: block;
+}
+
 .title {
   font-size: 1.8rem;
   font-weight: 700;
@@ -67,8 +95,21 @@
     grid-template-columns: 1fr;
   }
   
+  .desktopSidebar {
+    display: none;
+  }
+
+  .mobileFilterButton {
+    display: inline-flex;
+  }
+  
   .header {
     flex-direction: column;
+  }
+
+  .controls {
+    width: 100%;
+    justify-content: space-between;
   }
 }
 
