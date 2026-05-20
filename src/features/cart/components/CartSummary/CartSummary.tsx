@@ -1,8 +1,9 @@
 
 'use client';
 
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import Button  from '@/src/components/ui/Button/Button';
+import { useAuth } from '@/src/features/auth';
 import styles from './CartSummary.module.css';
 
 interface CartSummaryProps {
@@ -16,6 +17,16 @@ const CartSummary = ({
   formattedSubtotal,
   showCheckout = false,
 }: CartSummaryProps) => {
+  const router = useRouter();
+  const { isAuthenticated } = useAuth();
+
+  const handleCheckout = () => {
+    if (!isAuthenticated) {
+      router.push('/login?redirectTo=/checkout');
+    } else {
+      router.push('/checkout');
+    }
+  };
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Order Summary</h2>
@@ -36,11 +47,9 @@ const CartSummary = ({
 
       <div className={styles.actions}>
         {showCheckout && (
-          <Link href="/checkout" className={styles.link}>
-            <Button variant="outline" size="medium" fullWidth>
-              Proceed to Checkout
-            </Button>
-          </Link>
+          <Button variant="outline" size="medium" fullWidth onClick={handleCheckout}>
+            Proceed to Checkout
+          </Button>
         )}
       </div>
     

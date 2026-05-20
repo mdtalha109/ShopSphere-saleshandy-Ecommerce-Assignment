@@ -1,11 +1,12 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft } from 'lucide-react';
 import Button from '@/src/components/ui/Button/Button';
+import { useAuth } from '@/src/features/auth';
 import { Order } from '@/src/features/checkout/types';
 import { CheckoutService } from '@/src/features/checkout/services/checkoutService';
 import {
@@ -21,9 +22,17 @@ const checkoutService = new CheckoutService(
 
 export default function OrderDetailPage() {
   const params = useParams();
+  const router = useRouter();
+  const { isAuthenticated, isLoading: authLoading } = useAuth();
   const orderId = params.id as string;
   const [order, setOrder] = useState<Order | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (!authLoading && !isAuthenticated) {
+      router.push(`/login?redirectTo=/orders/${orderId}`);
+    }
+  }, [authLoading, isAuthenticated, router, orderId]);
 
   useEffect(() => {
     const loadOrder = () => {
@@ -54,7 +63,7 @@ export default function OrderDetailPage() {
     return `${styles.status} ${styles[status]}`;
   };
 
-  if (isLoading) {
+  if (authLoading || isLoading) {
     return (
       <div className={styles.container}>
         <div className={styles.content}>
@@ -65,6 +74,10 @@ export default function OrderDetailPage() {
         </div>
       </div>
     );
+  }
+
+  if (!isAuthenticated) {
+    return null;
   }
 
   if (!order) {

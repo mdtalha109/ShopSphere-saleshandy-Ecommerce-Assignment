@@ -2,12 +2,14 @@
 
 import { useState, FormEvent } from 'react';
 import { useAuth } from './useAuth';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import toast from 'react-hot-toast';
 
 export function useLogin() {
   const { login, loginAsGuest, isLoading, error: authError } = useAuth();
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirectTo = searchParams.get('redirectTo') || '/';
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -25,7 +27,7 @@ export function useLogin() {
     try {
       await login(email, password);
       toast.success('Successfully logged in!');
-      router.push('/');
+      router.push(redirectTo);
     } catch {
       const errorMsg = authError || 'Login failed';
       setError(errorMsg);
@@ -39,7 +41,7 @@ export function useLogin() {
     try {
       await loginAsGuest();
       toast.success('Welcome, Guest!');
-      router.push('/');
+      router.push(redirectTo);
     } catch {
       const errorMsg = authError || 'Guest login failed';
       setError(errorMsg);

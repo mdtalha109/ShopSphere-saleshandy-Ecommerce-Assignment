@@ -1,11 +1,13 @@
 "use client";
 
 import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 import Link from 'next/link';
 import Button from '@/src/components/ui/Button/Button';
 import { useCart } from '@/src/hooks/cart';
 import { useCheckout } from '@/src/features/checkout';
 import { useCartProducts } from '@/src/features/cart';
+import { useAuth } from '@/src/features/auth';
 import { CheckoutService } from '@/src/features/checkout/services/checkoutService';
 import {
   localStorageOrderRepository,
@@ -22,9 +24,16 @@ const checkoutService = new CheckoutService(
 
 export default function CheckoutPage() {
   const router = useRouter();
+  const { isAuthenticated, isLoading: authLoading } = useAuth();
   const { state: cartState, clearCart } = useCart();
   const { productsById, isLoading } = useCartProducts(cartState.items);
   const { selectedAddressId, isProcessing, placeOrder } = useCheckout();
+
+  useEffect(() => {
+    if (!authLoading && !isAuthenticated) {
+      router.push('/login?redirectTo=/checkout');
+    }
+  }, [authLoading, isAuthenticated, router]);
 
   const handlePlaceOrder = async () => {
     try {
@@ -40,7 +49,7 @@ export default function CheckoutPage() {
     }
   };
 
-  if (isLoading) {
+  if (authLoading || isLoading) {
     return (
       <div className={styles.container}>
         <div className={styles.content}>
@@ -51,6 +60,10 @@ export default function CheckoutPage() {
         </div>
       </div>
     );
+  }
+
+  if (!isAuthenticated) {
+    return null;
   }
 
   if (cartState.items.length === 0) {

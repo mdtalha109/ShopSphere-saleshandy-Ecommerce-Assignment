@@ -1,15 +1,26 @@
 "use client";
 
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 import Link from 'next/link';
 import Button from '@/src/components/ui/Button/Button';
 import { useOrders } from '@/src/features/checkout';
+import { useAuth } from '@/src/features/auth';
 import styles from './orders.module.css';
 import OrderCard from '@/src/features/checkout/components/OrderCard/OrderCard';
 
 export default function OrdersPage() {
+  const router = useRouter();
+  const { isAuthenticated, isLoading: authLoading } = useAuth();
   const { orders, isLoading } = useOrders();
 
-  if (isLoading) {
+  useEffect(() => {
+    if (!authLoading && !isAuthenticated) {
+      router.push('/login?redirectTo=/orders');
+    }
+  }, [authLoading, isAuthenticated, router]);
+
+  if (authLoading || isLoading) {
     return (
       <div className={styles.container}>
         <div className={styles.content}>
@@ -20,6 +31,10 @@ export default function OrdersPage() {
         </div>
       </div>
     );
+  }
+
+  if (!isAuthenticated) {
+    return null;
   }
 
   if (orders.length === 0) {
