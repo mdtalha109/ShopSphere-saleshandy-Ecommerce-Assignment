@@ -1,0 +1,85 @@
+.input {
+  width: 100%;
+  font-size: 0.875rem;
+}
+
+.input:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+
+.text,
+.email,
+.password,
+.number,
+.search {
+  padding: 0.625rem 0.875rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: white;
+  color: #111827;
+}
+
+.text:focus,
+.email:focus,
+.password:focus,
+.number:focus,
+.search:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.text:disabled,
+.email:disabled,
+.password:disabled,
+.number:disabled,
+.search:disabled {
+  background-color: #f9fafb;
+}
+
+.text::placeholder,
+.email::placeholder,
+.password::placeholder,
+.number::placeholder,
+.search::placeholder {
+  color: #9ca3af;
+}
+
+.checkbox {
+  width: auto;
+  height: 1rem;
+  cursor: pointer;
+  accent-color: #111827;
+}
+
+.checkbox:disabled {
+  cursor: not-allowed;
+}
+
+.small {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8125rem;
+}
+
+.medium {
+  padding: 0.625rem 0.875rem;
+  font-size: 0.875rem;
+}
+
+.large {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+}
+
+.error {
+  border-color: #dc2626;
+}
+
+.error:focus {
+  border-color: #dc2626;
+}
+
+.fullWidth {
+  width: 100%;
+}
