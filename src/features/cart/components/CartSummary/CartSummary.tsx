@@ -34,23 +34,18 @@ const CartSummary = ({
         <span className={styles.totalValue}>{formattedSubtotal}</span>
       </div>
 
-      <p className={styles.note}>
-        Shipping and taxes will be calculated at checkout
-      </p>
-
       <div className={styles.actions}>
         {showCheckout && (
-          <Button variant="primary" size="large" disabled>
-            Proceed to Checkout
-          </Button>
+          <Link href="/checkout" className={styles.link}>
+            <Button variant="outline" size="medium" fullWidth>
+              Proceed to Checkout
+            </Button>
+          </Link>
         )}
-        <Link href="/" className={styles.link}>
-          <Button variant="outline" size="small">
-            Continue Shopping
-          </Button>
-        </Link>
       </div>
-    </div>
+    
+      </div>
+    
   );
 }
 
