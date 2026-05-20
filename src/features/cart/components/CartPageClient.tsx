@@ -36,9 +36,9 @@ export function CartPageClient() {
     <div className={styles.container}>
       <div className={styles.header}>
         <h1 className={styles.title}>Shopping Cart</h1>
-        <p className={styles.subtitle}>
-          {summary.totalItems} {summary.totalItems === 1 ? 'item' : 'items'}
-        </p>
+        <span className={styles.subtitle}>
+          ({summary.totalItems} {summary.totalItems === 1 ? 'item' : 'items'})
+        </span>
       </div>
 
       <div className={styles.content}>
