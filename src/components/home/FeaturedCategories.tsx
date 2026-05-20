@@ -27,7 +27,7 @@ const categories: CategoryItem[] = [
     name: "Electronics",
     icon: <Laptop size={32} />,
     description: "Laptops, Phones & More",
-    href: "/products?category=electronics",
+    href: "/category/electronics",
     color: "#275df5",
   },
   {
@@ -35,7 +35,7 @@ const categories: CategoryItem[] = [
     name: "Clothing",
     icon: <Shirt size={32} />,
     description: "Fashion for Everyone",
-    href: "/products?category=clothing",
+    href: "/category/clothing",
     color: "#f54242",
   },
   {
@@ -43,7 +43,7 @@ const categories: CategoryItem[] = [
     name: "Accessories",
     icon: <Watch size={32} />,
     description: "Watches, Bags & More",
-    href: "/products?category=accessories",
+    href: "/category/accessories",
     color: "#f5a623",
   },
   {
@@ -51,7 +51,7 @@ const categories: CategoryItem[] = [
     name: "Home & Garden",
     icon: <Home size={32} />,
     description: "Furniture & Decor",
-    href: "/products?category=home-garden",
+    href: "/category/home-garden",
     color: "#7ed321",
   },
   {
@@ -59,7 +59,7 @@ const categories: CategoryItem[] = [
     name: "Sports & Outdoors",
     icon: <Dumbbell size={32} />,
     description: "Fitness & Adventure",
-    href: "/products?category=sports-outdoors",
+    href: "/category/sports-outdoors",
     color: "#ff6b6b",
   },
   {
@@ -67,7 +67,7 @@ const categories: CategoryItem[] = [
     name: "Beauty & Health",
     icon: <Sparkles size={32} />,
     description: "Skincare & Wellness",
-    href: "/products?category=beauty-health",
+    href: "/category/beauty-health",
     color: "#e056fd",
   },
   
