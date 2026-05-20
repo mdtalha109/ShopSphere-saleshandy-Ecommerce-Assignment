@@ -1,6 +1,6 @@
 /* Section */
 .section {
-  padding: 3.5rem 1rem;
+  padding: 1.5rem 1rem;
   background: #fff;
 }
 
@@ -147,7 +147,7 @@
 /* Desktop */
 @media (min-width: 1024px) {
   .section {
-    padding: 4rem 2rem;
+    padding: 2rem 2rem;
   }
 
   .header {

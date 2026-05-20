@@ -1,6 +1,6 @@
 /* Category Row Section */
 .section {
-  padding: 2.5rem 0;
+  padding: 1.5rem 0;
   background-color: #fff;
 }
 
@@ -103,11 +103,11 @@
 /* Desktop Styles */
 @media (min-width: 1024px) {
   .section {
-    padding: 3rem 0;
+    padding: 1.5rem 0;
   }
 
   .container {
-    padding: 0 3rem;
+    padding: 0 2rem;
   }
 
   .header {
