@@ -1,0 +1,188 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.addButton {
+  font-size: 0.875rem;
+}
+
+.addressList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.addressCard {
+  position: relative;
+  padding: 1rem;
+  border: 2px dashed #e5e7eb;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.addressCard:hover {
+  border-color: #d1d5db;
+  background-color: #f9fafb;
+}
+
+.addressCard.selected {
+  border-color: var(--color-primary);
+  background-color: #f9fafb;
+}
+
+.radioButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.addressContent {
+  padding-right: 2.5rem;
+}
+
+.addressName {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.375rem;
+  letter-spacing: -0.01em;
+}
+
+.addressPhone {
+  font-size: 0.9375rem;
+  color: #6b7280;
+  margin-bottom: 0.625rem;
+  font-weight: 500;
+}
+
+.addressText {
+  font-size: 0.9375rem;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.addressActions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.actionButton {
+  font-size: 0.8125rem;
+  padding: 0.375rem 0.75rem;
+  background: transparent;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.15s;
+}
+
+.actionButton:hover {
+  background-color: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+.actionButton.delete {
+  color: #dc2626;
+  border-color: #fecaca;
+}
+
+.actionButton.delete:hover {
+  background-color: #fef2f2;
+  border-color: #dc2626;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 2rem;
+  color: #6b7280;
+}
+
+.emptyIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.emptyText {
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modalContent {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.modalTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: #6b7280;
+  transition: color 0.15s;
+}
+
+.closeButton:hover {
+  color: #111827;
+}
+
+@media (max-width: 640px) {
+  .modal {
+    padding: 0;
+  }
+  
+  .modalContent {
+    max-height: 100vh;
+    border-radius: 0;
+  }
+}

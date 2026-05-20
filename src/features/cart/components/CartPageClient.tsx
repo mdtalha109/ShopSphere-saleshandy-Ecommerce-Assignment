@@ -55,7 +55,7 @@ export function CartPageClient() {
           <CartSummary
             totalItems={summary.totalItems}
             formattedSubtotal={summary.formattedSubtotal}
-            showCheckout={false} 
+            showCheckout={true} 
           />
         </aside>
       </div>

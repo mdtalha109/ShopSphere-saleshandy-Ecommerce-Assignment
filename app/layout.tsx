@@ -4,6 +4,7 @@ import { HeaderLayout } from "@/src/components/header";
 import { QueryProvider } from "@/src/lib/query";
 import { CartProvider } from "@/src/contexts";
 import { AuthProvider } from "@/src/features/auth";
+import { CheckoutProvider } from "@/src/features/checkout";
 import { Toaster } from "@/src/components/ui/Toaster";
 import "./globals.css";
 
@@ -36,9 +37,11 @@ export default function RootLayout({
         <QueryProvider>
           <AuthProvider>
             <CartProvider>
-              <Toaster />
-              <HeaderLayout />
-              {children}
+              <CheckoutProvider>
+                <Toaster />
+                <HeaderLayout />
+                {children}
+              </CheckoutProvider>
             </CartProvider>
           </AuthProvider>
         </QueryProvider>

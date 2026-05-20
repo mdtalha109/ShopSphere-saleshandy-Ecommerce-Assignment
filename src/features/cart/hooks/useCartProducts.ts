@@ -15,7 +15,7 @@ interface UseCartProductsResult {
 }
 
 export function useCartProducts(cartItems: CartItem[]): UseCartProductsResult {
-  const productIds = cartItems.map((item) => item.productId);
+  const productIds = cartItems?.map((item) => item.productId) || [];
 
   const queries = useQueries({
     queries: productIds.map((productId) => ({
