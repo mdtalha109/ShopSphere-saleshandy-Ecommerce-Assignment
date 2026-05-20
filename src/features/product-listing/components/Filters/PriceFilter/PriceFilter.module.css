@@ -64,32 +64,6 @@
   font-weight: 500;
 }
 
-.input {
-  width: 100%;
-  padding: 0.625rem 0.75rem;
-  border: 1.5px solid #e0e0e0;
-  border-radius: 6px;
-  font-size: 0.875rem;
-  outline: none;
-  transition: all 0.2s ease;
-  background-color: #ffffff;
-  color: #1a1a1a;
-}
-
-.input:hover {
-  border-color: #c0c0c0;
-}
-
-.input:focus {
-  border-color: var(--primary-color, #0066cc);
-  background-color: #ffffff;
-}
-
-.input::placeholder {
-  color: #999999;
-  font-weight: 400;
-}
-
 .separator {
   margin-bottom: 0.5rem;
   color: #666;

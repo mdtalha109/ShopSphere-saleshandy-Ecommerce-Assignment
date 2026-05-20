@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { validatePriceRange } from '../../../utils/urlFilters';
 import styles from './PriceFilter.module.css';
 import Button from '@/src/components/ui/Button/Button';
+import Input from '@/src/components/ui/Input/Input';
 
 interface PriceFilterProps {
   min: number;
@@ -64,15 +65,14 @@ const PriceFilter = ({ min, max, currentMin, currentMax, onChange }: PriceFilter
           <label htmlFor="min-price" className={styles.label}>
             Min
           </label>
-          <input
+          <Input
             id="min-price"
-            type="number"
+            variant="number"
             min={min}
             max={max}
             value={minValue}
             onChange={(e) => setMinValue(e.target.value)}
             placeholder={`₹${min}`}
-            className={styles.input}
           />
         </div>
 
@@ -82,15 +82,14 @@ const PriceFilter = ({ min, max, currentMin, currentMax, onChange }: PriceFilter
           <label htmlFor="max-price" className={styles.label}>
             Max
           </label>
-          <input
+          <Input
             id="max-price"
-            type="number"
+            variant="number"
             min={min}
             max={max}
             value={maxValue}
             onChange={(e) => setMaxValue(e.target.value)}
             placeholder={`₹${max}`}
-            className={styles.input}
           />
         </div>
       </div>

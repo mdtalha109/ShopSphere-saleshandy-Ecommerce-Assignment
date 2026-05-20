@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import { filterBrandsBySearch } from '../../../services/filterCounting';
+import Input from '@/src/components/ui/Input/Input';
 import styles from './BrandFilter.module.css';
 
 interface BrandFilterProps {
@@ -41,23 +42,22 @@ const BrandFilter = ({ brands, selectedBrands, onChange }: BrandFilterProps) => 
       </div>
 
       {brands.length > 5 && (
-        <input
-          type="text"
+        <Input
+          variant="search"
           placeholder="Search brands..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className={styles.searchInput}
         />
       )}
 
       <div className={styles.list}>
         {filteredBrands.map((brand) => (
           <label key={brand.slug} className={styles.item}>
-            <input
-              type="checkbox"
+            <Input
+              variant="checkbox"
               checked={selectedBrands.includes(brand.slug)}
               onChange={() => handleToggle(brand.slug)}
-              className={styles.checkbox}
+              fullWidth={false}
             />
             <span className={styles.brandName}>{brand.name}</span>
             <span className={styles.count}>({brand.count})</span>

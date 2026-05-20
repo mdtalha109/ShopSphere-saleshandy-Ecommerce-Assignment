@@ -43,28 +43,6 @@
   transform: scale(0.96);
 }
 
-.searchInput {
-  width: 100%;
-  padding: 0.425rem 0.75rem;
-  border: 1.5px solid #e0e0e0;
-  border-radius: 6px;
-  font-size: 0.8125rem;
-  margin-bottom: 0.875rem;
-  outline: none;
-  transition: all 0.2s ease;
-  background-color: #fafafa;
-}
-
-.searchInput:hover {
-  border-color: #c0c0c0;
-  background-color: #ffffff;
-}
-
-.searchInput:focus {
-  border-color: #0066cc;
-  background-color: #ffffff;
-}
-
 .list {
   display: flex;
   flex-direction: column;
@@ -102,14 +80,6 @@
 
 .item:hover {
   background-color: #f5f7fa;
-}
-
-.checkbox {
-  width: 1.125rem;
-  height: 1.125rem;
-  cursor: pointer;
-  flex-shrink: 0;
-  accent-color: #0066cc;
 }
 
 .brandName {
