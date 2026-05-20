@@ -3,7 +3,6 @@
 export {
   ProductCategory,
   StockStatus,
-  ProductSortOption,
 } from "./product-enums.types";
 
 // Attributes
