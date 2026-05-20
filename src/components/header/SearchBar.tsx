@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { Search } from "lucide-react";
 import { useSearchDropdown } from "@/src/hooks/useSearchDropdown";
+import Input from "@/src/components/ui/Input/Input";
 import { SearchDropdown } from "./SearchDropdown";
 import styles from "./SearchBar.module.css";
 
@@ -51,8 +52,8 @@ export function SearchBar({
     <form onSubmit={handleSearch} className={className}>
       <div className={styles.searchContainer} ref={searchRef}>
         <Search className={styles.searchIcon} size={20} />
-        <input
-          type="search"
+        <Input
+          variant="search"
           placeholder={placeholder}
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
