@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Product } from "@/src/types";
 import { useCartActions } from "@/src/hooks/cart";
 import { AddToCartState, ProductImageGalleryState } from "../types/product-detail.types";
+import toast from "react-hot-toast";
 
 
 export function useProductDetail(product: Product) {
@@ -49,8 +50,7 @@ export function useProductDetail(product: Product) {
       // Add item to cart via CartContext
       addItem(product.id, cartState.quantity);
       
-      // Optional: Reset quantity to 1 after adding
-      // setCartState((prev) => ({ ...prev, quantity: 1 }));
+      toast.success(`${product?.title} added to cart!`);
     } catch (error) {
       console.error('Failed to add item to cart:', error);
     } finally {
