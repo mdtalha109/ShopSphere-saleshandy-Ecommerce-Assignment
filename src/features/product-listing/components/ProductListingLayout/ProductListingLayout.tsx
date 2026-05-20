@@ -19,22 +19,18 @@ const ProductListingLayout = ({ products, title, description }: ProductListingLa
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <div>
-          <h1 className={styles.title}>{title}</h1>
-          {description && <p className={styles.description}>{description}</p>}
-        </div>
-       
-      </div>
+
 
       <div className={styles.layout}>
         <FilterSidebar products={products} />
 
         <div className={styles.mainContent}>
-          <div className={styles.toolbar}>
-            <p className={styles.resultCount}>
-              Showing {filteredProducts.length} of {products.length} products
-            </p>
+          <div className={styles.header}>
+            <div>
+              <h1 className={styles.title}>{title}</h1>
+              {description && <p className={styles.description}>{description}</p>}
+            </div>
+
             <SortDropdown
               value={filters.sortBy}
               onChange={(sortBy) => updateFilters({ sortBy })}
