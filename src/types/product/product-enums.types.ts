@@ -20,8 +20,3 @@ export enum StockStatus {
 }
 
 
-export enum ProductSortOption {
-  NEWEST = "newest",
-  PRICE_LOW_TO_HIGH = "price-asc",
-  PRICE_HIGH_TO_LOW = "price-desc",
-}
