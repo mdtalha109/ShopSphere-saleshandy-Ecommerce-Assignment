@@ -7,6 +7,8 @@ import Button from "@/src/components/ui/Button/Button";
 import { SearchBar } from "./SearchBar";
 import styles from "./Header.module.css";
 import { useCart } from "@/src/hooks/cart";
+import { useAuth } from "@/src/features/auth";
+import UserMenu from "./UserMenu/UserMenu";
 
 
 interface HeaderProps {
@@ -23,9 +25,7 @@ export function Header({ children }: HeaderProps) {
 
   );
 }
-/**
- * Header Logo Component
- */
+
 Header.Logo = function HeaderLogo() {
   return (
     <Link href="/" className={styles.logo}>
@@ -34,23 +34,13 @@ Header.Logo = function HeaderLogo() {
   );
 };
 
-/**
- * Header Search Component
- * Wraps SearchBar with header-specific styling
- */
 Header.Search = function HeaderSearch() {
   return <SearchBar className={styles.searchForm} />;
 };
 
-/**
- * Header Actions Component
- * Contains cart and user actions
- */
 Header.Actions = function HeaderActions() {
     const cartCount = useCart()?.state?.items?.length; 
-    const user = {
-      isAuthenticated: false,
-    };
+    const { isAuthenticated } = useAuth();
 
   return (
     <div className={styles.actions}>
@@ -62,9 +52,13 @@ Header.Actions = function HeaderActions() {
           badge={cartCount > 0 ? cartCount : undefined}
         />
       </Link>
-      <Link href={user.isAuthenticated ? "/account" : "/login"}>
-        <Button >Sign In</Button>
-      </Link>
+      {isAuthenticated ? (
+        <UserMenu />
+      ) : (
+        <Link href="/login">
+          <Button size="small">Sign In</Button>
+        </Link>
+      )}
     </div>
   );
 };
