@@ -58,11 +58,23 @@
 }
 
 @media (max-width: 640px) {
+  .form {
+    gap: 1rem;
+  }
+
   .row {
     grid-template-columns: 1fr;
   }
   
   .actions {
     flex-direction: column;
+    position: sticky;
+    bottom: 0;
+    background: white;
+    padding: 1rem 1.25rem;
+    margin: 1rem -1.25rem 0;
+    border-top: 1px solid #e5e7eb;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
   }
 }

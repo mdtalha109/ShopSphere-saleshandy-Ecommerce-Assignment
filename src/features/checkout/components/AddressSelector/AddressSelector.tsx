@@ -88,7 +88,9 @@ const AddressSelector = () => {
                                 <X size={24} />
                             </button>
                         </div>
-                        <AddressForm onSuccess={handleFormSuccess} onCancel={() => setShowAddForm(false)} />
+                        <div className={styles.modalBody}>
+                            <AddressForm onSuccess={handleFormSuccess} onCancel={() => setShowAddForm(false)} />
+                        </div>
                     </div>
                 </div>
             )}
