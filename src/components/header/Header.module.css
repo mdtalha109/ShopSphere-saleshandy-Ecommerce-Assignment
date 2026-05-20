@@ -4,8 +4,7 @@
   top: 0;
   z-index: 50;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(12px);
+  background-color: white;
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -210,6 +209,10 @@
     padding: 0 2rem;
     flex-wrap: nowrap;
     gap: 1rem;
+  }
+
+  .header{
+      box-shadow: rgb(229, 231, 235) 0px 1px 4px 0px;
   }
 
   .nav {
