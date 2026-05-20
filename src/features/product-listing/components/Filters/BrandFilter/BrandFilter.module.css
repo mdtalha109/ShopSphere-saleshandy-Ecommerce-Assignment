@@ -1,0 +1,136 @@
+.container {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.2s ease;
+}
+
+.container:hover {
+  background-color: #fafafa;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  text-transform: uppercase;
+}
+
+.clearButton {
+  font-size: 0.75rem;
+  color: var(--primary-color);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.clearButton:hover {
+  color: var(--primary-color);
+  background-color: #f0f7ff;
+}
+
+.clearButton:active {
+  transform: scale(0.96);
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.425rem 0.75rem;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 0.8125rem;
+  margin-bottom: 0.875rem;
+  outline: none;
+  transition: all 0.2s ease;
+  background-color: #fafafa;
+}
+
+.searchInput:hover {
+  border-color: #c0c0c0;
+  background-color: #ffffff;
+}
+
+.searchInput:focus {
+  border-color: #0066cc;
+  background-color: #ffffff;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  max-height: 280px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.list::-webkit-scrollbar {
+  width: 2px;
+}
+
+.list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.list::-webkit-scrollbar-thumb {
+  background: #d1d1d1;
+  border-radius: 3px;
+}
+
+.list::-webkit-scrollbar-thumb:hover {
+  background: #b1b1b1;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 0.425rem;
+  cursor: pointer;
+  padding: 0.5rem 0.625rem;
+  transition: all 0.2s ease;
+  border-radius: 6px;
+}
+
+.item:hover {
+  background-color: #f5f7fa;
+}
+
+.checkbox {
+  width: 1.125rem;
+  height: 1.125rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  accent-color: #0066cc;
+}
+
+.brandName {
+  flex: 1;
+  font-size: 0.875rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.count {
+  font-size: 0.75rem;
+  color: #888;
+  background-color: #f0f0f0;
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.noResults {
+  font-size: 0.875rem;
+  color: #999;
+  text-align: center;
+  padding: 1rem 0;
+}
