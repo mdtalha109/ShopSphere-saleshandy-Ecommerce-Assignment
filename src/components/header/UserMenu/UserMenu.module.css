@@ -76,7 +76,36 @@
 }
 
 .dropdownActions {
-  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.menuLink {
+  width: 100%;
+  padding: 0.625rem 1rem;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  text-align: left;
+  text-decoration: none;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.menuLink:hover {
+  background: #f3f4f6;
+}
+
+.menuIcon {
+  width: 16px;
+  height: 16px;
 }
 
 .logoutButton {

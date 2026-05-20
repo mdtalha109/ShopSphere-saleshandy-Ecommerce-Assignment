@@ -2,7 +2,8 @@
 
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { User, LogOut } from "lucide-react";
+import Link from "next/link";
+import { User, LogOut, Package } from "lucide-react";
 import { useAuth } from "@/src/features/auth";
 import toast from 'react-hot-toast';
 import styles from "./UserMenu.module.css";
@@ -60,8 +61,11 @@ const UserMenu = () => {
               {user.isGuest ? "Guest Account" : ""}
             </div>
           </div>
-          <div className={styles.dropdownActions}>
-            <button
+          <div className={styles.dropdownActions}>            
+            <Link href="/orders" className={styles.menuLink} onClick={() => setIsOpen(false)}>
+              <Package className={styles.menuIcon} />
+              My Orders
+            </Link>            <button
               className={styles.logoutButton}
               onClick={handleLogout}
             >
