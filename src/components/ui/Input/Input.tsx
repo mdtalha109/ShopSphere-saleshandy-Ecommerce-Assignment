@@ -40,10 +40,15 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 
     const wrapperClassNames = [
       styles.inputWrapper,
+      variant === "checkbox" && styles.checkboxWrapper,
       fullWidth && styles.fullWidth,
     ]
       .filter(Boolean)
       .join(" ");
+
+    if (variant === "checkbox") {
+      return <input ref={ref} type={inputType} className={classNames} {...props} />;
+    }
 
     return (
       <div className={wrapperClassNames}>
