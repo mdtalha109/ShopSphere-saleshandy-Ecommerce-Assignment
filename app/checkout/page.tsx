@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Button from '@/src/components/ui/Button/Button';
 import { useCart } from '@/src/hooks/cart';
@@ -28,6 +28,7 @@ export default function CheckoutPage() {
   const { state: cartState, clearCart } = useCart();
   const { productsById, isLoading } = useCartProducts(cartState.items);
   const { selectedAddressId, isProcessing, placeOrder } = useCheckout();
+  const [isRedirecting, setIsRedirecting] = useState(false);
 
   useEffect(() => {
     if (!authLoading && !isAuthenticated) {
@@ -40,12 +41,14 @@ export default function CheckoutPage() {
       const orderItems = checkoutService.prepareOrderItems(cartState.items, productsById);
 
       const order = await placeOrder(orderItems, 'cod');
-
+      setIsRedirecting(true);
       clearCart();
       
-      router.push(`/orders/${order.id}`);
+      // Navigate to order details page
+      router.replace(`/orders/${order.id}`);
     } catch (error) {
       console.error('Failed to place order:', error);
+      setIsRedirecting(false);
     }
   };
 
@@ -64,6 +67,19 @@ export default function CheckoutPage() {
 
   if (!isAuthenticated) {
     return null;
+  }
+
+  if (isRedirecting) {
+    return (
+      <div className={styles.container}>
+        <div className={styles.content}>
+          <div className={styles.loading}>
+            <div className={styles.spinner} />
+            <p>Redirecting to order details...</p>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   if (cartState.items.length === 0) {
