@@ -66,19 +66,6 @@ const AddressForm = ({ onSuccess, onCancel }: AddressFormProps) => {
         />
       </div>
 
-      <div className={styles.inputGroup}>
-        <label htmlFor="addressLine2" className={styles.label}>
-          Address Line 2
-        </label>
-        <Input
-          id="addressLine2"
-          value={formData.addressLine2 || ''}
-          onChange={(e) => updateField('addressLine2', e.target.value)}
-          placeholder="Road name, Area, Colony"
-          disabled={isSubmitting}
-        />
-      </div>
-
       <div className={styles.row}>
         <div className={styles.inputGroup}>
           <label htmlFor="city" className={styles.label}>
