@@ -12,16 +12,10 @@ interface AddressFormProps {
 }
 
 const AddressForm = ({ onSuccess, onCancel }: AddressFormProps) => {
-  const { formData, error, isSubmitting, updateField, handleSubmit } = useAddressForm(onSuccess);
+  const { formData, fieldErrors, isSubmitting, updateField, handleSubmit } = useAddressForm(onSuccess);
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
-      {error && (
-        <div className={styles.error} role="alert">
-          {error}
-        </div>
-      )}
-
       <div className={styles.row}>
         <div className={styles.inputGroup}>
           <label htmlFor="name" className={styles.label}>
@@ -33,6 +27,8 @@ const AddressForm = ({ onSuccess, onCancel }: AddressFormProps) => {
             onChange={(e) => updateField('name', e.target.value)}
             placeholder="Enter your full name"
             disabled={isSubmitting}
+            error={!!fieldErrors.name}
+            errorMessage={fieldErrors.name}
             required
           />
         </div>
@@ -47,6 +43,8 @@ const AddressForm = ({ onSuccess, onCancel }: AddressFormProps) => {
             onChange={(e) => updateField('phone', e.target.value)}
             placeholder="10-digit mobile number"
             disabled={isSubmitting}
+            error={!!fieldErrors.phone}
+            errorMessage={fieldErrors.phone}
             required
           />
         </div>
@@ -62,6 +60,8 @@ const AddressForm = ({ onSuccess, onCancel }: AddressFormProps) => {
           onChange={(e) => updateField('addressLine1', e.target.value)}
           placeholder="House No., Building Name"
           disabled={isSubmitting}
+          error={!!fieldErrors.addressLine1}
+          errorMessage={fieldErrors.addressLine1}
           required
         />
       </div>
@@ -70,6 +70,13 @@ const AddressForm = ({ onSuccess, onCancel }: AddressFormProps) => {
         <label htmlFor="addressLine2" className={styles.label}>
           Address Line 2
         </label>
+        <Input
+          id="addressLine2"
+          value={formData.addressLine2 || ''}
+          onChange={(e) => updateField('addressLine2', e.target.value)}
+          placeholder="Road name, Area, Colony"
+          disabled={isSubmitting}
+        />
       </div>
 
       <div className={styles.row}>
@@ -83,6 +90,8 @@ const AddressForm = ({ onSuccess, onCancel }: AddressFormProps) => {
             onChange={(e) => updateField('city', e.target.value)}
             placeholder="City"
             disabled={isSubmitting}
+            error={!!fieldErrors.city}
+            errorMessage={fieldErrors.city}
             required
           />
         </div>
@@ -97,6 +106,8 @@ const AddressForm = ({ onSuccess, onCancel }: AddressFormProps) => {
             onChange={(e) => updateField('state', e.target.value)}
             placeholder="State"
             disabled={isSubmitting}
+            error={!!fieldErrors.state}
+            errorMessage={fieldErrors.state}
             required
           />
         </div>
@@ -113,6 +124,8 @@ const AddressForm = ({ onSuccess, onCancel }: AddressFormProps) => {
             onChange={(e) => updateField('postalCode', e.target.value)}
             placeholder="6-digit PIN code"
             disabled={isSubmitting}
+            error={!!fieldErrors.postalCode}
+            errorMessage={fieldErrors.postalCode}
             required
           />
         </div>
@@ -127,6 +140,8 @@ const AddressForm = ({ onSuccess, onCancel }: AddressFormProps) => {
             onChange={(e) => updateField('country', e.target.value)}
             placeholder="Country"
             disabled={isSubmitting}
+            error={!!fieldErrors.country}
+            errorMessage={fieldErrors.country}
             required
           />
         </div>
