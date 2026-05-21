@@ -27,7 +27,7 @@ export function useLogin() {
     try {
       await login(email, password);
       toast.success('Successfully logged in!');
-      router.push(redirectTo);
+      router.replace(redirectTo);
     } catch {
       const errorMsg = authError || 'Login failed';
       setError(errorMsg);
@@ -41,7 +41,7 @@ export function useLogin() {
     try {
       await loginAsGuest();
       toast.success('Welcome, Guest!');
-      router.push(redirectTo);
+      router.replace(redirectTo);
     } catch {
       const errorMsg = authError || 'Guest login failed';
       setError(errorMsg);
