@@ -47,6 +47,20 @@ const PriceFilter = ({ min, max, currentMin, currentMax, onChange }: PriceFilter
     onChange(undefined, undefined);
   };
 
+  const handleMinChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    if (value === '' || (!isNaN(Number(value)) && Number(value) >= 0)) {
+      setMinValue(value);
+    }
+  };
+
+  const handleMaxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    if (value === '' || (!isNaN(Number(value)) && Number(value) >= 0)) {
+      setMaxValue(value);
+    }
+  };
+
   const hasValues = minValue || maxValue;
 
   return (
@@ -68,10 +82,10 @@ const PriceFilter = ({ min, max, currentMin, currentMax, onChange }: PriceFilter
           <Input
             id="min-price"
             variant="number"
-            min={min}
+            min={0}
             max={max}
             value={minValue}
-            onChange={(e) => setMinValue(e.target.value)}
+            onChange={handleMinChange}
             placeholder={`₹${min}`}
           />
         </div>
@@ -85,10 +99,10 @@ const PriceFilter = ({ min, max, currentMin, currentMax, onChange }: PriceFilter
           <Input
             id="max-price"
             variant="number"
-            min={min}
+            min={0}
             max={max}
             value={maxValue}
-            onChange={(e) => setMaxValue(e.target.value)}
+            onChange={handleMaxChange}
             placeholder={`₹${max}`}
           />
         </div>
