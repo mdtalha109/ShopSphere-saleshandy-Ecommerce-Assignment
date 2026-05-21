@@ -80,9 +80,6 @@ const CartItem = ({
                 />
             </div>
 
-            <div className={styles.subtotalSection}>
-                <span className={styles.subtotal}>{formattedSubtotal}</span>
-            </div>
 
             <div className={styles.removeSection}>
                 <IconButton
@@ -90,7 +87,7 @@ const CartItem = ({
                     onClick={onRemove}
                     aria-label={`Remove ${product.title} from cart`}
                     variant="ghost"
-                    icon={<Trash/>}
+                    icon={<Trash color='red'/>}
                 >
                 </IconButton>
             </div>

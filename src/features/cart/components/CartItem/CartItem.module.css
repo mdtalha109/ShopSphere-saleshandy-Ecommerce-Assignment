@@ -1,12 +1,12 @@
 .container {
-  display: grid;
-  grid-template-columns: 120px 1fr auto auto auto;
+  display: flex;
   gap: 1.5rem;
   padding: 1.5rem;
   background: white;
   border: 1px solid var(--color-border);
   border-radius: 8px;
-  align-items: start;
+  align-items: flex-start;
+  position: relative;
 }
 
 .imageLink {
@@ -32,6 +32,7 @@
   flex-direction: column;
   gap: 0.5rem;
   min-width: 0;
+  flex: 1;
 }
 
 .info {
@@ -97,12 +98,21 @@
   flex-direction: column;
   gap: 0.5rem;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .subtotalSection {
   display: flex;
-  align-items: start;
+  align-items: center;
   padding-top: 0.25rem;
+  flex-shrink: 0;
+}
+
+.subtotalLabel {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  margin-right: 0.5rem;
+  display: none;
 }
 
 .subtotal {
@@ -114,7 +124,8 @@
 
 .removeSection {
   display: flex;
-  align-items: start;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .removeIcon {
@@ -124,7 +135,6 @@
 
 @media (max-width: 1024px) {
   .container {
-    grid-template-columns: 100px 1fr auto;
     gap: 1rem;
   }
 
@@ -134,29 +144,21 @@
   }
 
   .quantitySection {
-    grid-column: 2 / 3;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .subtotalSection {
-    grid-column: 3 / 4;
-    grid-row: 1 / 2;
-  }
-
-  .removeSection {
-    grid-column: 3 / 4;
-    grid-row: 2 / 3;
-    justify-content: flex-end;
   }
 }
 
 @media (max-width: 640px) {
   .container {
-    grid-template-columns: 80px 1fr;
+    flex-wrap: wrap;
     gap: 0.75rem;
     padding: 1rem;
+    padding-top: 0.75rem;
+  }
+
+  .imageLink {
+    flex-shrink: 0;
+    align-self: flex-start;
   }
 
   .imageWrapper {
@@ -164,8 +166,15 @@
     height: 80px;
   }
 
+  .details {
+    flex: 1;
+    min-width: 0;
+    padding-right: 2rem;
+  }
+
   .title {
     font-size: 0.9375rem;
+    -webkit-line-clamp: 2;
   }
 
   .brand {
@@ -180,18 +189,35 @@
     font-size: 0.9375rem;
   }
 
+  .subtotalSection {
+    order: 2;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .subtotalLabel {
+    display: block;
+  }
+
   .subtotal {
-    font-size: 1rem;
+    font-size: 1.0625rem;
+    font-weight: 700;
   }
 
   .quantitySection {
-    grid-column: 1 / -1;
+    order: 1;
     flex-direction: row;
-    justify-content: space-between;
+    flex-basis: 100%;
+    margin-left: calc(80px + 0.75rem);
   }
 
   .removeSection {
-    grid-column: 1 / -1;
-    justify-content: center;
+    order: 3;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
   }
 }
