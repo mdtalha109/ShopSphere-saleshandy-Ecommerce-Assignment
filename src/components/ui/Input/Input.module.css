@@ -3,6 +3,19 @@
   font-size: 0.875rem;
 }
 
+.inputWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.errorMessage {
+  font-size: 0.75rem;
+  color: #dc2626;
+  margin-top: 0.25rem;
+}
+
 .input:disabled {
   cursor: not-allowed;
   opacity: 0.6;

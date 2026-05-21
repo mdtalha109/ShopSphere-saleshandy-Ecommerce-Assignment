@@ -8,6 +8,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   inputSize?: "small" | "medium" | "large";
   fullWidth?: boolean;
   error?: boolean;
+  errorMessage?: string;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -17,6 +18,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       inputSize = "medium",
       fullWidth = true,
       error = false,
+      errorMessage,
       className = "",
       type,
       ...props
@@ -36,7 +38,19 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       .filter(Boolean)
       .join(" ");
 
-    return <input ref={ref} type={inputType} className={classNames} {...props} />;
+    const wrapperClassNames = [
+      styles.inputWrapper,
+      fullWidth && styles.fullWidth,
+    ]
+      .filter(Boolean)
+      .join(" ");
+
+    return (
+      <div className={wrapperClassNames}>
+        <input ref={ref} type={inputType} className={classNames} {...props} />
+        {errorMessage && <span className={styles.errorMessage}>{errorMessage}</span>}
+      </div>
+    );
   }
 );
 
