@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { ShoppingCart } from "lucide-react";
+import { Suspense } from "react";
 import IconButton from "@/src/components/ui/Button/IconButton";
 import Button from "@/src/components/ui/Button/Button";
 import { SearchBar } from "./SearchBar";
@@ -35,7 +36,11 @@ Header.Logo = function HeaderLogo() {
 };
 
 Header.Search = function HeaderSearch() {
-  return <SearchBar className={styles.searchForm} />;
+  return (
+    <Suspense fallback={<div className={styles.searchForm} />}>
+      <SearchBar className={styles.searchForm} />
+    </Suspense>
+  );
 };
 
 Header.Actions = function HeaderActions() {
