@@ -6,6 +6,7 @@ interface UseSearchDropdownOptions {
   debounceMs?: number;
   staleTime?: number;
   maxResults?: number;
+  initialQuery?: string;
 }
 
 /**
@@ -18,10 +19,11 @@ export function useSearchDropdown(options: UseSearchDropdownOptions = {}) {
     debounceMs = 300,
     staleTime = 60 * 1000,
     maxResults = 8,
+    initialQuery = "",
   } = options;
 
-  const [searchQuery, setSearchQuery] = useState("");
-  const [debouncedQuery, setDebouncedQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState(initialQuery);
+  const [debouncedQuery, setDebouncedQuery] = useState(initialQuery);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
 
@@ -42,15 +44,6 @@ export function useSearchDropdown(options: UseSearchDropdownOptions = {}) {
       staleTime,
     }
   );
-
-  // Show/hide dropdown based on query length
-  useEffect(() => {
-    if (debouncedQuery.trim().length >= minQueryLength) {
-      setIsDropdownOpen(true);
-    } else {
-      setIsDropdownOpen(false);
-    }
-  }, [debouncedQuery, minQueryLength]);
 
   // Close dropdown on click outside
   useEffect(() => {

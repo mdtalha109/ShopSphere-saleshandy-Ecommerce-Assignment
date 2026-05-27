@@ -1,6 +1,7 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Search } from "lucide-react";
 import { useSearchDropdown } from "@/src/hooks/useSearchDropdown";
 import Input from "@/src/components/ui/Input/Input";
@@ -19,6 +20,9 @@ export function SearchBar({
   className,
 }: SearchBarProps) {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const urlQuery = searchParams.get("q") || "";
+  
   const {
     searchQuery,
     setSearchQuery,
@@ -28,7 +32,14 @@ export function SearchBar({
     searchRef,
     searchResults,
     isLoading,
-  } = useSearchDropdown();
+  } = useSearchDropdown({ initialQuery: urlQuery });
+
+  useEffect(() => {
+    if (urlQuery !== searchQuery) {
+      setSearchQuery(urlQuery);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [urlQuery]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
